@@ -7,7 +7,7 @@
             <v-col cols="6" class="d-flex flex-column">
               <v-card-title>{{ project.name }}</v-card-title>
               <v-card-subtitle>{{ currentPage.title }}</v-card-subtitle>
-              <v-card-text class="flex-grow-1">{{ currentPage.text }}</v-card-text>
+              <v-card-text class="flex-grow-1 linebreak">{{ currentPage.text }}</v-card-text>
               <v-card-actions class="pa-4">
                 <v-btn
                     v-if="isLastPage"
@@ -37,7 +37,7 @@
             <v-col cols="6">
               <v-carousel show-arrows-on-hover hide-delimiters v-model="page">
                 <v-carousel-item v-for="(page, pageIndex) of project.view.pages" :key="pageIndex">
-                  <v-img :src="page.imgSrc" height="105%"/>
+                  <v-img :src="page.imgSrc" contain height="105%"/>
                 </v-carousel-item>
               </v-carousel>
             </v-col>
@@ -45,12 +45,12 @@
           <template v-else>
             <v-carousel show-arrows-on-hover hide-delimiters v-model="page" height="200">
               <v-carousel-item v-for="(page, pageIndex) of project.view.pages" :key="pageIndex">
-                <v-img :src="page.imgSrc" height="200"/>
+                <v-img :src="page.imgSrc" contain height="200"/>
               </v-carousel-item>
             </v-carousel>
             <v-card-title>{{ project.name }}</v-card-title>
             <v-card-subtitle>{{ currentPage.title }}</v-card-subtitle>
-            <v-card-text class="flex-grow-1">{{ currentPage.text }}</v-card-text>
+            <v-card-text class="flex-grow-1 linebreak">{{ currentPage.text }}</v-card-text>
             <v-card-actions class="pa-4">
               <v-btn
                   v-if="isLastPage"
@@ -119,4 +119,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.linebreak {
+  white-space: pre-line;
+}
 </style>

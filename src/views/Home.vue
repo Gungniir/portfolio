@@ -40,11 +40,39 @@
           <v-btn
               color="primary"
               x-large
+              @click="showContacts = !showContacts"
           >
             <v-icon left>mdi-account-box-outline</v-icon>
             Контакты
           </v-btn>
         </v-row>
+        <v-expand-transition>
+          <v-row v-if="showContacts" class="mt-10">
+            <v-col cols="12" md="6" offset-md="3">
+              <v-card outlined>
+                <v-card-title>Контакты</v-card-title>
+                <v-card-text>
+                  <v-list>
+                    <v-list-item
+                        v-for="contact of $store.state.contacts"
+                        :key="contact.name"
+                        :href="contact.link"
+                        target="_blank"
+                    >
+                      <v-list-item-icon>
+                        <v-icon>{{ contact.icon }}</v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-content class="text-start">
+                        <v-list-item-title>{{ contact.name }}</v-list-item-title>
+                        <v-list-item-subtitle>{{ contact.value }}</v-list-item-subtitle>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list>
+                </v-card-text>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-expand-transition>
       </v-col>
     </v-row>
   </v-container>
@@ -53,5 +81,8 @@
 <script>
 export default {
   name: 'Home',
+  data: () => ({
+    showContacts: false
+  })
 }
 </script>

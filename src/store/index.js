@@ -5,6 +5,26 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
+        contacts: {
+            github: {
+                icon: "mdi-github",
+                name: "GitHub",
+                value: "@gungniir",
+                link: "https://github.com/gungniir"
+            },
+            telegram: {
+                icon: "fab fa-telegram-plane",
+                name: "Telegram",
+                value: "@mrloruse",
+                link: "https://t.me/mrloruse"
+            },
+            email: {
+                icon: "mdi-email",
+                name: "Email",
+                value: "vladimir.kurus@yandex.ru",
+                link: "mailto:vladimir.kurus@yandex.ru"
+            }
+        },
         projects: [
             {
                 id: "w1",

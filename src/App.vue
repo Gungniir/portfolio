@@ -3,7 +3,6 @@
     <v-app-bar
         app
         color="primary"
-        dark
     >
       <div class="d-flex align-center pointer" @click="$route.name !== 'Home' ? $router.push({name: 'Home'}) : ''">
         <v-img
@@ -20,29 +19,27 @@
       <v-spacer></v-spacer>
 
       <div class="d-flex align-center">
-        <v-tooltip bottom>
+        <v-tooltip
+            v-for="contact of $store.state.contacts"
+            :key="contact.name"
+            bottom
+        >
           <template #activator="{ on, attrs }">
-            <v-btn icon class="mr-2" href="https://github.com/gungniir" target="_blank" v-bind="attrs" v-on="on">
-              <v-icon>mdi-github</v-icon>
+            <v-btn icon class="mr-2" :href="contact.link" target="_blank" v-bind="attrs" v-on="on">
+              <v-icon>{{ contact.icon }}</v-icon>
             </v-btn>
           </template>
-          <span>GitHub</span>
+          <span>{{ contact.name }}</span>
         </v-tooltip>
-        <v-tooltip bottom>
+        <v-tooltip
+            bottom
+        >
           <template #activator="{ on, attrs }">
-            <v-btn icon class="mr-2" href="https://t.me/mrloruse" target="_blank" v-bind="attrs" v-on="on">
-              <v-icon>fab fa-telegram-plane</v-icon>
+            <v-btn icon class="mr-2" @click="$vuetify.theme.dark = !$vuetify.theme.dark" v-bind="attrs" v-on="on">
+              <v-icon>mdi-theme-light-dark</v-icon>
             </v-btn>
           </template>
-          <span>Telegram</span>
-        </v-tooltip>
-        <v-tooltip bottom>
-          <template #activator="{ on, attrs }">
-            <v-btn icon href="mailto:vladimir.kurus@yandex.ru" target="_blank" v-bind="attrs" v-on="on">
-              <v-icon>mdi-email</v-icon>
-            </v-btn>
-          </template>
-          <span>Email</span>
+          <span>Тема</span>
         </v-tooltip>
       </div>
     </v-app-bar>

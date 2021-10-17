@@ -16,6 +16,11 @@ export default new Vuetify({
                 primary: colors.grey.darken3,
                 accent: colors.lightBlue.darken3,
             },
+            light: {
+                background: colors.grey.lighten5,
+                primary: colors.lightGreen.lighten2,
+                accent: colors.red.lighten2,
+            },
         },
     },
 });

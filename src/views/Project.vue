@@ -1,10 +1,9 @@
 <template>
   <v-container fluid>
     <v-row>
-      <v-col cols="1"/>
-      <v-col cols="10">
+      <v-col cols="12" md="10" offset-md="1">
         <v-card outlined>
-          <v-row>
+          <v-row v-if="$vuetify.breakpoint.smAndUp">
             <v-col cols="6" class="d-flex flex-column">
               <v-card-title>{{ project.name }}</v-card-title>
               <v-card-subtitle>{{ currentPage.title }}</v-card-subtitle>
@@ -43,6 +42,41 @@
               </v-carousel>
             </v-col>
           </v-row>
+          <template v-else>
+            <v-carousel show-arrows-on-hover hide-delimiters v-model="page" height="200">
+              <v-carousel-item v-for="(page, pageIndex) of project.view.pages" :key="pageIndex">
+                <v-img :src="page.imgSrc" height="200"/>
+              </v-carousel-item>
+            </v-carousel>
+            <v-card-title>{{ project.name }}</v-card-title>
+            <v-card-subtitle>{{ currentPage.title }}</v-card-subtitle>
+            <v-card-text class="flex-grow-1">{{ currentPage.text }}</v-card-text>
+            <v-card-actions class="pa-4">
+              <v-btn
+                  v-if="isLastPage"
+                  color="primary"
+                  to="/projects"
+              >
+                К проектам
+              </v-btn>
+              <v-btn
+                  v-else
+                  color="primary"
+                  @click="page++"
+              >
+                Далее
+              </v-btn>
+              <v-fade-transition>
+                <v-btn
+                    v-if="page !== 0"
+                    text
+                    @click="page--"
+                >
+                  Назад
+                </v-btn>
+              </v-fade-transition>
+            </v-card-actions>
+          </template>
         </v-card>
       </v-col>
     </v-row>

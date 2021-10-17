@@ -5,7 +5,7 @@
         color="primary"
         dark
     >
-      <div class="d-flex align-center">
+      <div class="d-flex align-center pointer" @click="$route.name !== 'Home' ? $router.push({name: 'Home'}) : ''">
         <v-img
             alt="Vuetify Logo"
             class="shrink mr-2 rounded-circle"
@@ -14,9 +14,6 @@
             transition="scale-transition"
             width="40"
         />
-      </div>
-
-      <div class="d-flex align-center">
         Владимир Курусь
       </div>
 
@@ -70,3 +67,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.pointer {
+  cursor: pointer;
+}
+</style>

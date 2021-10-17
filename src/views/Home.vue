@@ -32,6 +32,7 @@
               color="accent"
               class="mr-5"
               x-large
+              to="/projects"
           >
             <v-icon left>mdi-diamond-stone</v-icon>
             Проекты

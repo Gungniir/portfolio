@@ -1,6 +1,14 @@
 <template>
   <v-container>
     <v-row>
+      <v-col cols="12">
+        <v-card outlined>
+          <v-card-title>Мои проекты</v-card-title>
+          <v-card-text>
+            <p>Всем привет! Здесь представлены некоторые из моих проектов :)</p>
+          </v-card-text>
+        </v-card>
+      </v-col>
       <v-col cols="12" v-for="(project, index) of projects" :key="project.id">
         <ProjectsProjectCard :project="project" :reversed="index % 2 === 0"/>
       </v-col>

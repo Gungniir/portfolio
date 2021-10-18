@@ -8,10 +8,10 @@
         <v-img
             alt="Vuetify Logo"
             class="shrink mr-2 rounded-circle"
-            contain
-            src="~@/assets/ava.jpg"
+            :src="$vuetify.theme.dark ? '/img/ava/2.png' : '/img/ava/1.jpg'"
             transition="scale-transition"
             width="40"
+            height="40"
         />
         Владимир Курусь
       </div>

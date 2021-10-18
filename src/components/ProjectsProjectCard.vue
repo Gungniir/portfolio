@@ -1,5 +1,4 @@
 <template>
-
   <v-card outlined>
     <v-row v-if="$vuetify.breakpoint.smAndUp" :class="reversed ? `flex-row-reverse` : ``">
       <v-col cols="6" class="d-flex flex-column">

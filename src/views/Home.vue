@@ -4,9 +4,8 @@
       <v-col cols="12">
         <div class="d-flex align-center justify-center">
           <v-img
-              src="~@/assets/ava.jpg"
+              :src="$vuetify.theme.dark ? '/img/ava/2.png' : '/img/ava/1.jpg'"
               class="my-3 rounded-circle flex-grow-0"
-              contain
               height="200"
               width="200"
           />

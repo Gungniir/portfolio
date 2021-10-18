@@ -85,6 +85,12 @@
               </v-chip-group>
             </v-card-subtitle>
             <v-card-text class="flex-grow-1 linebreak">{{ currentPage.text }}</v-card-text>
+            <v-card-actions class="pa-4" v-if="currentPage.link">
+              <v-btn color="accent" :href="currentPage.link.url" target="_blank">
+                <v-icon left>{{ currentPage.link.icon ? currentPage.link.icon : 'mdi-web' }}</v-icon>
+                {{ currentPage.link.text }}
+              </v-btn>
+            </v-card-actions>
             <v-card-actions class="pa-4">
               <v-btn
                   v-if="isLastPage"

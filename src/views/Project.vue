@@ -7,6 +7,20 @@
             <v-col cols="6" class="d-flex flex-column">
               <v-card-title>{{ project.name }}</v-card-title>
               <v-card-subtitle>{{ currentPage.title }}</v-card-subtitle>
+              <v-card-subtitle style="margin-top: -32px" v-if="tags.length > 0">
+                <v-chip-group>
+                  <v-chip
+                      v-for="(tag, i) of tags"
+                      :key="i"
+                      outlined
+                      :color="tag.color"
+                      small
+                      pill>
+                    {{ tag.text }}
+                    <v-icon small right v-if="tag.icon">{{ tag.icon }}</v-icon>
+                  </v-chip>
+                </v-chip-group>
+              </v-card-subtitle>
               <v-card-text class="flex-grow-1 linebreak">{{ currentPage.text }}</v-card-text>
               <v-card-actions class="pa-4" v-if="currentPage.link">
                 <v-btn color="accent" :href="currentPage.link.url" target="_blank">
@@ -56,6 +70,20 @@
             </v-carousel>
             <v-card-title>{{ project.name }}</v-card-title>
             <v-card-subtitle>{{ currentPage.title }}</v-card-subtitle>
+            <v-card-subtitle style="margin-top: -32px" v-if="tags.length > 0">
+              <v-chip-group>
+                <v-chip
+                    v-for="(tag, i) of tags"
+                    :key="i"
+                    outlined
+                    :color="tag.color"
+                    small
+                    pill>
+                  {{ tag.text }}
+                  <v-icon small right v-if="tag.icon">{{ tag.icon }}</v-icon>
+                </v-chip>
+              </v-chip-group>
+            </v-card-subtitle>
             <v-card-text class="flex-grow-1 linebreak">{{ currentPage.text }}</v-card-text>
             <v-card-actions class="pa-4">
               <v-btn
@@ -110,6 +138,13 @@ export default {
     },
     isLastPage: function () {
       return this.page === this.project.view.pages.length - 1
+    },
+    tags: function () {
+      if (!this.project.tags) {
+        return []
+      }
+
+      return this.project.tags.map(tagName => this.$store.state.tags[tagName])
     }
   },
   methods: {

@@ -73,6 +73,14 @@ export default new Vuex.Store({
                 text: "Bot",
                 color: colors.orange.base,
             },
+            laravel: {
+                text: "Laravel",
+                color: colors.red.base,
+            },
+            typescript: {
+                text: "TypeScript",
+                color: colors.blue.base,
+            },
         },
         projects: [
             {
